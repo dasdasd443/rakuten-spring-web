@@ -6,13 +6,14 @@ import com.web.rakuten.Service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@RestController
+@RequestMapping(path="/product")
 public class ProductsController {
 
     private final ProductsService productsService;
@@ -22,10 +23,14 @@ public class ProductsController {
         this.productsService = productsService;
     }
 
-    @GetMapping("/")
-    public String home(Model model){
-        //List<Products> rakuten_products = productsService.getProducts();
-        model.addAttribute("products", productsService.getProducts());
-        return "index";
+    @PostMapping("/save")
+    public String saveProduct(@RequestBody Products product){
+        productsService.saveProduct(product);
+        return product.toString();
+    }
+
+    @DeleteMapping("/delete/{productId}")
+    public void deleteProduct(@PathVariable("productId") Long id){
+        productsService.deleteProduct(id);
     }
 }

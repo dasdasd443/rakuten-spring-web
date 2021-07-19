@@ -39,6 +39,41 @@
         </div>
     </div>
 </div>
+<div class="container-fluid popup">
+    <div class="background"></div>
+    <div class="popup-content">
+        <div class="popup-header">
+            <div class="title-text">
+                <span>RAKU</span><span>TECH</span>
+            </div>
+                <i class="fas fa-times" id="close-popup"></i>
+        </div>
+        <div class="popup-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" required class="form-control" id="product-name" placeholder="Enter Product Name">
+                </div>
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" required class="form-control" id="brand" aria-describedby="emailHelp" placeholder="Enter Brand">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" required min="0" step="0.01" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter Price">
+                </div>
+                <div class="form-group">
+                    <label for="discount_price">Discount Price</label>
+                    <input type="number" required min="0" step="0.01" class="form-control" id="discount_price" aria-describedby="emailHelp" placeholder="Enter Discount">
+                </div>
+                <div class="popup-footer">
+                    <span>Continune to add product</span>
+                    <button type="submit" class="btn btn-success">Continue <i class="fas fa-plus"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 navigation">
@@ -52,7 +87,7 @@
     <div class="row product-list-container">
         <div class="col-md-8 product-list-header">
             <span>Products</span>
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-plus" id="add-product"></i>
         </div>
     </div>
     <div class="row product-list">
@@ -70,7 +105,7 @@
                     </div>
                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur debitis fuga, laborum porro quas quod repellendus velit? A architecto, consequuntur est eveniet ipsa molestias pariatur, quos ullam velit veniam voluptates!</span>
                     <div class="option-icons">
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fas fa-trash-alt" th:onClick="deleteProduct()"></i>
                         <i class="fas fa-pen"></i>
                     </div>
                     <hr/>
@@ -80,5 +115,7 @@
         </div>
     </div>
 </div>
+
+<script src="/js/index.js"></script>
 </body>
 </html>
