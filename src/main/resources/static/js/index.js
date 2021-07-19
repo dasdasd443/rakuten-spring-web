@@ -9,7 +9,26 @@ document.querySelector("#close-popup").addEventListener("click", () => {
 });
 
 const deleteProduct = (id) => {
-    alert(id);
+    async function delProd(id){
+        let product_obj = {
+            product_id: id,
+            product_name: "xd",
+            price: 0,
+            discount_price: 0
+        }
+        const response = await fetch('/product/delete',{
+            method: "DELETE",
+            headers: {
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify(product_obj)
+        }).then(res => {
+
+        });
+    }
+
+    delProd(id);
+    document.querySelector(`#product-${id}`).remove();
 }
 
 document.querySelector(".popup-body form").addEventListener("submit", (e) => {
