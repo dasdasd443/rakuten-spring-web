@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="/css/login.css" rel="stylesheet">
+</head>
+<body>
+<section>
+    <section class="login-container--background" style="position:fixed"></section>
+    <section class="container-background" style="background-image: url(images/cover-img.jpg);background-attachment:fixed;">
+    </section>
+    <section class="login-container">
+        <section class="login-container--text">
+            <section class="login-container--text__text-container">
+                <a href="/">
+                    <section class="login-container--text__text-container--title">
+                        <h1>RAKU</h1>
+                        <h1>TECH</h1>
+                    </section>
+                </a>
+                <span>Browse from over 500 devices in your area</span>
+            </section>
+        </section>
+        <section class="login-container__login">
+            <section class="login-container__login--card">
+                <section class='arrow-container' style="display:none">
+                    <i class="fas fa-arrow-left backarrow"></i>
+                </section>
+                <h1>Sign In</h1>
+                <span className='existing-account--text'>Already have an account? <a href="/login">Log in</a></span>
+                <section class="login__form">
+                    <form action="">
+                        <div class="input-group">
+                            <label for="fullname">Full Name <span id="fullname-error" class='error'></span></label>
+                            <input type="text" id="fullname" required/>
+
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email <span id="email-error" class='error'></span></label>
+                            <input type="text" id="email" required class='error'/>
+
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password <span id="password-error" class='error'></span></label>
+                            <input type="password" id='password' placeholder="Must be at least 6 characters" required class='error'/>
+                            <i class="fas fa-eye show-password"></i>
+
+                        </div>
+                        <div class='input-group'>
+                            <input type="checkbox" id="email-updates"/>
+                            <label for="email">Signup for email updates</label>
+                        </div>
+                        <input type="submit" value="SIGN IN"/>
+                    </form>
+                    <span class='terms'>
+                                    By continuing, you agree to accept our Privacy Policy & Terms of Service.
+                                </span>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+</body>
+</html>

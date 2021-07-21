@@ -28,4 +28,17 @@ public class ProductsService {
     public void deleteProduct(Long id){
         productsRepository.deleteById(id);
     }
+
+    public void updateProduct(Products product){
+        productsRepository.findById(product.getProduct_id()).map(
+                products -> {
+                    products.setProduct_name(product.getProduct_name());
+                    products.setBrand(product.getBrand());
+                    products.setPrice(product.getPrice());
+                    products.setDiscount_price(product.getDiscount_price());
+
+                    return productsRepository.save(products);
+                }
+        );
+    }
 }

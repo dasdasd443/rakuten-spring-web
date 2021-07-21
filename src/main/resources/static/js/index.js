@@ -8,15 +8,44 @@ document.querySelector("#close-popup").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "none";
 });
 
-const updateProduct = (id) => {
-    let productNameInputs = document.querySelectorAll(`.product-name-input`);
-    document.querySelectorAll(`.product-name`).forEach((elem,index) => {
-        elem.style.display="block";
-        productNameInputs[index].style.display="none"
-    });
 
-    document.querySelector(`#product-name-${id}`).style.display="none";
-    document.querySelector(`#product-name-input-${id}`).style.display="block";
+const updateModal =(id) => {
+    document.querySelector(`#popup-2-${id}`).style.display = "flex";
+}
+
+const closeModal =(id) => {
+    document.querySelector(`#popup-2-${id}`).style.display = "none";
+}
+
+const updateProduct = (id) => {
+    let product_name = document.querySelector(`#product-name-${id}`).value;
+    let brand = document.querySelector(`#product-brand-${id}`).value;
+    let price = document.querySelector(`#product-price-${id}`).value;
+    let discount_price = document.querySelector(`#product-discount-price-${id}`).value;
+
+    console.log(document.querySelector(`#product-brand-${id}`))
+    async function updProd(id, product_name,brand,price,discount_price){
+        let product_obj = {
+            product_id: id,
+            product_name,
+            brand,
+            price,
+            discount_price
+        }
+
+        const response = await fetch('/product/update', {
+            method: 'PUT',
+            headers: {
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify(product_obj)
+        }).then( res => {
+            res.text();
+        })
+    }
+
+    updProd(id,product_name,brand,price,discount_price);
+    location.reload();
 }
 
 const deleteProduct = (id) => {
@@ -71,5 +100,6 @@ document.querySelector(".popup-body form").addEventListener("submit", (e) => {
     }
 
     passData(product);
+    location.reload();
 });
 

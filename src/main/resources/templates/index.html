@@ -18,7 +18,7 @@
             <span>USD</span>
         </div>
         <div class="col-md-4 profile">
-            <span><i class="fas fa-users"></i> My Profile</span>
+            <span><i class="fas fa-users"></i> <a href="login">My Profile</a></span>
             <span>0 Items</span>
             <span><i class="fas fa-search"></i> Search</span>
         </div>
@@ -49,7 +49,7 @@
                 <i class="fas fa-times" id="close-popup"></i>
         </div>
         <div class="popup-body">
-            <form action="">
+            <form id="add-form" action="">
                 <div class="form-group">
                     <label for="product-name">Product Name</label>
                     <input type="text" required class="form-control" id="product-name" placeholder="Enter Product Name">
@@ -66,14 +66,18 @@
                     <label for="discount_price">Discount Price</label>
                     <input type="number" required min="0" step="0.01" class="form-control" id="discount_price" aria-describedby="emailHelp" placeholder="Enter Discount">
                 </div>
-                <div class="popup-footer">
-                    <span>Continune to add product</span>
-                    <button type="submit" class="btn btn-success">Continue <i class="fas fa-plus"></i></button>
-                </div>
+
             </form>
+            <div class="popup-footer">
+                <span>Continune to add product</span>
+                <button type="submit" form="add-form" class="btn btn-success">Continue <i class="fas fa-plus"></i></button>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 navigation">
@@ -98,20 +102,59 @@
                 <div class="product-text-container">
                     <div>
                         <div>
-                            <span th:id="'product-name-' + ${product.product_id}" class="product-name" th:text="${product.product_name}"></span>
-                            <input th:value="${product.product_name}" th:id="'product-name-input-' + ${product.product_id}" class="product-name-input" style="display:none" type="text"/>
+                            <span class="product-name" th:id="'span-product-name-' + ${product.product_id}" th:text="${product.product_name}"></span>
                         </div>
                         <div class="product-price-container">
-                            <span>$<span th:text="${product.price - product.discount_price}"></span></span>
-                            <strike >$<small th:text="${product.price}"></small></strike>
+                            <span>$<span th:id="'span-product-discount-' + ${product.product_id}" th:text="${product.price - product.discount_price}"></span></span>
+                            <strike >$<small th:id="'span-product-price-' + ${product.product_id}" th:text="${product.price}"></small></strike>
                         </div>
                     </div>
+                    <small th:text="${product.brand}"></small>
                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur debitis fuga, laborum porro quas quod repellendus velit? A architecto, consequuntur est eveniet ipsa molestias pariatur, quos ullam velit veniam voluptates!</span>
                     <div class="option-icons">
                         <i class="fas fa-trash-alt" th:onClick="|deleteProduct('${product.product_id}')|"></i>
-                        <i class="fas fa-pen" id="update-button" th:onClick="|updateProduct('${product.product_id}')|"></i>
+                        <i class="fas fa-pen" th:onClick="|updateModal('${product.product_id}')|"></i>
                     </div>
                     <hr/>
+                </div>
+
+
+
+                <div class="container-fluid popup-2" th:id="'popup-2-' + ${product.product_id}">
+                    <div class="background"></div>
+                    <div class="popup-content">
+                        <div class="popup-header">
+                            <div class="title-text">
+                                <span>RAKU</span><span>TECH</span>
+                            </div>
+                            <i class="fas fa-times" id="close-popup-2" th:onClick="|closeModal('${product.product_id}')|"></i>
+                        </div>
+                        <div class="popup-body">
+                            <form th:id="'form-product-' + ${product.product_id}" action="">
+                                <div class="form-group">
+                                    <label for="product-name">Product Name</label>
+                                    <input type="text" required class="form-control" th:value="${product.product_name}" th:id="'product-name-' + ${product.product_id}" placeholder="Enter Product Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="brand">Brand</label>
+                                    <input type="text" required class="form-control" th:value="${product.brand}" th:id="'product-brand-' + ${product.product_id}" aria-describedby="emailHelp" placeholder="Enter Brand">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" required min="0" step="0.01" class="form-control" th:value="${product.price}" th:id="'product-price-' + ${product.product_id}" aria-describedby="emailHelp" placeholder="Enter Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="discount_price">Discount Price</label>
+                                    <input type="number" required min="0" step="0.01" class="form-control" th:value="${product.discount_price}" th:id="'product-discount-price-' + ${product.product_id}" aria-describedby="emailHelp" placeholder="Enter Discount">
+                                </div>
+
+                            </form>
+                            <div class="popup-footer">
+                                <span>Save Changes</span>
+                                <button type="submit" th:form="'form-product-' + ${product.product_id}" class="btn btn-success" th:onClick="|updateProduct('${product.product_id}')|">Save <i class="fas fa-save"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
