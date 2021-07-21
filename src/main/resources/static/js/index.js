@@ -8,6 +8,17 @@ document.querySelector("#close-popup").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "none";
 });
 
+const updateProduct = (id) => {
+    let productNameInputs = document.querySelectorAll(`.product-name-input`);
+    document.querySelectorAll(`.product-name`).forEach((elem,index) => {
+        elem.style.display="block";
+        productNameInputs[index].style.display="none"
+    });
+
+    document.querySelector(`#product-name-${id}`).style.display="none";
+    document.querySelector(`#product-name-input-${id}`).style.display="block";
+}
+
 const deleteProduct = (id) => {
     async function delProd(id){
         let product_obj = {

@@ -94,10 +94,13 @@
         <h1 class="empty-indicator" th:if="${ #lists.isEmpty(products)}">Empty :(</h1>
         <div class="col-md-8">
             <div th:each="product: ${products}" class="row product" th:id="'product-' + ${product.product_id}">
-                <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640" alt="">
+                <img th:id="'product-image-' + ${product.product_id}" src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640" alt="">
                 <div class="product-text-container">
                     <div>
-                        <span class="product-name" th:text="${product.product_name}"></span>
+                        <div>
+                            <span th:id="'product-name-' + ${product.product_id}" class="product-name" th:text="${product.product_name}"></span>
+                            <input th:value="${product.product_name}" th:id="'product-name-input-' + ${product.product_id}" class="product-name-input" style="display:none" type="text"/>
+                        </div>
                         <div class="product-price-container">
                             <span>$<span th:text="${product.price - product.discount_price}"></span></span>
                             <strike >$<small th:text="${product.price}"></small></strike>
@@ -106,7 +109,7 @@
                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur debitis fuga, laborum porro quas quod repellendus velit? A architecto, consequuntur est eveniet ipsa molestias pariatur, quos ullam velit veniam voluptates!</span>
                     <div class="option-icons">
                         <i class="fas fa-trash-alt" th:onClick="|deleteProduct('${product.product_id}')|"></i>
-                        <i class="fas fa-pen"></i>
+                        <i class="fas fa-pen" id="update-button" th:onClick="|updateProduct('${product.product_id}')|"></i>
                     </div>
                     <hr/>
                 </div>
