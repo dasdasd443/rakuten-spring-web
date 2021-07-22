@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @SpringBootApplication
@@ -30,12 +31,13 @@ public class RakutenApplication {
 		return "index";
 	}
 
-	@GetMapping("/login")
+	
+	@GetMapping("/user-login")
 	public String login(){
 		return "login";
 	}
 
-	@GetMapping("/register")
+	@GetMapping("/user-register")
 	public String register(){
 		return "register";
 	}
