@@ -8,7 +8,6 @@ document.querySelector("#close-popup").addEventListener("click", () => {
     document.querySelector(".popup").style.display = "none";
 });
 
-
 const updateModal =(id) => {
     document.querySelector(`#popup-2-${id}`).style.display = "flex";
 }
@@ -100,6 +99,6 @@ document.querySelector(".popup-body form").addEventListener("submit", (e) => {
     }
 
     passData(product);
-    location.reload();
+
 });
 

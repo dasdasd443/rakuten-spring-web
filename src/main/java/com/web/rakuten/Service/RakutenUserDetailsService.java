@@ -15,7 +15,8 @@ public class RakutenUserDetailsService implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
-        return new User("admin", "password", new ArrayList<>());
+        
+        return new User("qweqwe", "123456", new ArrayList<>());
     }
 
     

@@ -32,7 +32,7 @@ public class RakutenApplication {
 	}
 
 	
-	@GetMapping("/user-login")
+	@GetMapping("/login")
 	public String login(){
 		return "login";
 	}

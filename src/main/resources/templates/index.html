@@ -50,6 +50,7 @@
         </div>
         <div class="popup-body">
             <form id="add-form" action="">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <div class="form-group">
                     <label for="product-name">Product Name</label>
                     <input type="text" required class="form-control" id="product-name" placeholder="Enter Product Name">
