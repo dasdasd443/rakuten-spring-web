@@ -34,4 +34,9 @@ public class ProductsController {
 
         productsService.deleteProduct(product.getProduct_id());
     }
+
+    @PutMapping("/update")
+    public void updateProduct(@RequestBody Products product){
+        productsService.updateProduct(product);
+    }
 }
